@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Student Data Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1 th:text="'MY Website ' + ${nim}">MY Website 20230140248</h1>
+            <a th:href="@{/logout}" class="btn btn-outline">Logout</a>
+        </header>
+        
+        <main class="dashboard-content">
+            <section class="welcome-section">
+                <h2>Selamat datang di aplikasi!</h2>
+                <a th:href="@{/form}" class="btn btn-secondary">+ Input Data Mahasiswa</a>
+            </section>
+
+            <section class="data-section">
+                <h3>Data Mahasiswa</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>NIM</th>
+                                <th>Jenis Kelamin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="student, iter : ${students}">
+                                <td th:text="${iter.count}">1</td>
+                                <td th:text="${student.nama}">Name</td>
+                                <td th:text="${student.nim}">NIM</td>
+                                <td th:text="${student.jenisKelamin}">Gender</td>
+                            </tr>
+                            <tr th:if="${students.empty}">
+                                <td colspan="4" class="empty-msg">Belum ada data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="dashboard-footer">
+            <p>&copy; 2024 Student Management System - <span th:text="${nim}"></span></p>
+        </footer>
+    </div>
+</body>
+</html>

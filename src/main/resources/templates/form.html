@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Mahasiswa - Student Data Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-card">
+            <header class="card-header">
+                <h2>Form Input Mahasiswa</h2>
+            </header>
+            <form th:action="@{/form}" method="post" class="student-form">
+                <div class="form-group">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="nim">NIM:</label>
+                    <input type="text" id="nim" name="nim" placeholder="Masukkan NIM" required>
+                </div>
+                <div class="form-group">
+                    <label>Jenis Kelamin:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="jenisKelamin" value="Laki-laki" checked>
+                            <span>Laki-laki</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="jenisKelamin" value="Perempuan">
+                            <span>Perempuan</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a th:href="@{/home}" class="btn btn-muted">Kembali ke Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
